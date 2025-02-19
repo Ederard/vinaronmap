@@ -90,10 +90,15 @@
 
 
         markers.forEach(marker => {
-            L.marker(marker.coords, { icon: wineIcon })
-                .addTo(map)
-                .bindPopup(`<b>${marker.name}</b><br>${marker.info}`);
-        });
+    const pin = L.marker(marker.coords, { icon: wineIcon })
+        .addTo(map)
+        .bindPopup(`<b>${marker.name}</b><br>${marker.info}`);
+
+    pin.on('click', () => {
+        map.setView(marker.coords, 16); // Ajusta el nivel de zoom a 16
+    });
+});
+
     </script>
 </body>
 </html>
