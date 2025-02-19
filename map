@@ -1,0 +1,55 @@
+<script>
+    // Configuración inicial del mapa
+    const map = L.map('map').setView([-32.8832, -68.8458], 5); // Centro en Argentina/Chile
+
+    // Capa de vista satelital (usando Esri.WorldImagery)
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '© Esri'
+    });
+
+    // Capa de mapa base (OpenStreetMap)
+    const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    });
+
+    // Añadir capa satelital por defecto
+    satelliteLayer.addTo(map);
+
+    // Control para cambiar entre capas
+    const baseLayers = {
+        "Satélite": satelliteLayer,
+        "Mapa": osmLayer
+    };
+    L.control.layers(baseLayers).addTo(map);
+
+    // Icono personalizado para los pines
+    const customIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png', // Ejemplo de marcador verde
+        iconSize: [25, 41], // Tamaño del icono
+        iconAnchor: [12, 41], // Punto de anclaje
+        popupAnchor: [1, -34] // Posición del popup
+    });
+
+    // Datos de los viñedos (¡Modifica esto!)
+    const vineyards = [
+        {
+            name: "Viñedo Valle del Sol",
+            coords: [-32.8832, -68.8458], // Mendoza, Argentina
+            info: "Malbec y Cabernet Sauvignon<br>Altitud: 900 msnm",
+            icon: customIcon // Usa el icono personalizado
+        },
+        {
+            name: "Viñedo Montaña Azul",
+            coords: [-34.6380, -71.0800], // Valle de Colchagua, Chile
+            info: "Carménère y Syrah<br>Suelo volcánico",
+            icon: customIcon
+        }
+    ];
+
+    // Añadir marcadores al mapa
+    vineyards.forEach(vineyard => {
+        L.marker(vineyard.coords, { icon: vineyard.icon })
+            .addTo(map)
+            .bindPopup(`<h3>${vineyard.name}</h3><p>${vineyard.info}</p>`);
+    });
+</script>
