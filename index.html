@@ -3,54 +3,92 @@
 <head>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        #map { height: 600px; width: 100%; }
+        #map { height: 400px; width: 100%; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Inicializar el mapa
-        const map = L.map('map').setView([-36.942775, -3.988445], 5);
 
-        // Capa de mapa base (OpenStreetMap)
+        const map = L.map('map').setView([36.99868, -3.985463], 10);
+
+
         const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         });
 
-        // Capa de vista satelital (Esri World Imagery)
+
         const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: '© Esri'
         });
 
-        // Añadir capa inicial (vista satelital)
+
         satelliteLayer.addTo(map);
 
-        // Control para cambiar entre capas
+
         const baseLayers = {
             "Mapa": osmLayer,
             "Satélite": satelliteLayer
         };
         L.control.layers(baseLayers).addTo(map);
 
-        // Añadir pines de prueba
+
         const markers = [
             {
-                name: "Viñedo Valle del Sol",
+                name: "Montes de Málaga",
                 coords: [36.806901,-4.369103],
-                info: "Información de tipo de uva o vinos producidos"
+                info: "Ancestral 0438"
             },
+            
+            {
+                name: "Los Guajes, Granada",
+                coords: [36.841667, -3.584167],
+                info: "Blanco 0889, Ancestral 0889 y Coche Discoteca"
+            },
+            
+            {
+                name: "Sedella, Málaga",
+                coords: [36.863, -4.033],
+                info: "Dulce"
+            },
+            
+            {
+                name: "Antequera, Málaga",
+                coords: [37.053226, -4.583872],
+                info: "Ancestral"
+            },
+            
+            {
+                name: "Albuñol, Granada",
+                coords: [37.053226, -4.583872],
+                info: "Orange 0931"
+            },
+            
+            {
+                name: "Cartajima, Málaga",
+                coords: [36.649275, -5.146109],
+                info: "Orange 0931"
+            },
+            
+            {
+                name: "Mollina, Málaga",
+                coords: [37.136437, -4.681423],
+                info: "Coche discoteca, Rapagón Blanco y Rapagón Ancestral"
+            },
+            
+            
         ];
 
-        // Icono personalizado (opcional)
+
         const wineIcon = L.icon({
-            iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png', // Icono de uva
-            iconSize: [40, 40], // Tamaño del icono
-            iconAnchor: [20, 40], // Punto de anclaje
-            popupAnchor: [0, -40] // Posición del popup
+            iconUrl: 'https://i.imgur.com/Ht2QE8X.png', 
+            iconSize: [40, 50], 
+            iconAnchor: [20, 40], 
+            popupAnchor: [0, -40] 
         });
 
-        // Añadir marcadores al mapa
+
         markers.forEach(marker => {
             L.marker(marker.coords, { icon: wineIcon })
                 .addTo(map)
