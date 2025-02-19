@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Inicializar el mapa
-        const map = L.map('map').setView([-32.8832, -68.8458], 5);
+        const map = L.map('map').setView([-36.942775, -3.988445], 5);
 
         // Capa de mapa base (OpenStreetMap)
         const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,14 +37,9 @@
         const markers = [
             {
                 name: "Viñedo Valle del Sol",
-                coords: [-32.8832, -68.8458], // Mendoza, Argentina
-                info: "Variedades: Malbec, Cabernet Sauvignon"
+                coords: [36.806901,-4.369103],
+                info: "Información de tipo de uva o vinos producidos"
             },
-            {
-                name: "Viñedo Montaña Azul",
-                coords: [-34.6380, -71.0800], // Valle de Colchagua, Chile
-                info: "Variedades: Carménère, Syrah"
-            }
         ];
 
         // Icono personalizado (opcional)
