@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
 
-        const map = L.map('map').setView([36.932763, -4.290341], 10);
+        const map = L.map('map').setView([36.841331, -4.447409], 10);
 
 
         const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -95,7 +95,7 @@
         .bindPopup(`<b>${marker.name}</b><br>${marker.info}`);
 
     pin.on('click', () => {
-        map.setView(marker.coords, 16); // Ajusta el nivel de zoom a 16
+        map.setView(marker.coords, 20);
     });
 });
 
