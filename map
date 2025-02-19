@@ -1,6 +1,5 @@
 <script>
-    // Configuración inicial del mapa
-    const map = L.map('map').setView([-32.8832, -68.8458], 5); // Centro en Argentina/Chile
+    const map = L.map('map').setView([36.972494, -4.023025], 5); 
 
     // Capa de vista satelital (usando Esri.WorldImagery)
     const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -33,14 +32,14 @@
     // Datos de los viñedos (¡Modifica esto!)
     const vineyards = [
         {
-            name: "Viñedo Valle del Sol",
-            coords: [-32.8832, -68.8458], // Mendoza, Argentina
-            info: "Malbec y Cabernet Sauvignon<br>Altitud: 900 msnm",
+            name: "Montes de Málaga",
+            coords: [-32.8832, -68.8458], 
+            info: "vinos y tipo de uva",
             icon: customIcon // Usa el icono personalizado
         },
         {
             name: "Viñedo Montaña Azul",
-            coords: [-34.6380, -71.0800], // Valle de Colchagua, Chile
+            coords: [], 
             info: "Carménère y Syrah<br>Suelo volcánico",
             icon: customIcon
         }
